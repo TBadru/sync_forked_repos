@@ -1,26 +1,26 @@
 # GitHub Fork Mass Sync Script
 
-A simple Bash script to **mass-sync all your GitHub forks** with their upstream repositories **entirely server-side** using the GitHub API.
+A simple Bash script to mass-sync all your GitHub forks with their upstream repositories entirely server-side using the GitHub API.
 No local cloning. No disk usage. Fast and repeatable.
 
 ---
 
 ## Features
 
-* Syncs **all forked repositories you own**
-* Uses **GitHub’s native fork sync** (server-side)
-* **No cloning or local git operations**
+* Syncs all forked repositories you own
+* Uses GitHub’s native fork sync (server-side)
+* No cloning or local git operations
 * Safe to re-run anytime
-* Works with **public and private forks**
-* Syncs **default branch only**
+* Works with public and private forks
+* Syncs default branch only
 
 ---
 
 ## Requirements
 
-* **Bash**
-* **GitHub CLI (`gh`)**
-* **jq**
+* bash shell
+* GitHub CLI (`gh`)
+* jq
 * Authenticated GitHub CLI session
 
 ### Install dependencies

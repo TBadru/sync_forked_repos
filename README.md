@@ -43,11 +43,6 @@ sudo apt install gh jq
 sudo dnf install gh jq
 ```
 
-Authenticate with GitHub:
-
-```bash
-gh auth login
-```
 
 ---
 
@@ -60,13 +55,20 @@ git clone https://github.com/TBadru/sync_forked_repos.git
 cd sync_forked_repos
 ```
 
-### 2. Make the script executable
+### 2. Authenticate with GitHub
+
+```bash
+gh auth login
+```
+
+
+### 3. Make the script executable
 
 ```bash
 chmod +x sync_forked_repos.sh
 ```
 
-### 3. Run the script
+### 4. Run the script
 
 ```bash
 ./sync_forked_repos.sh
@@ -92,26 +94,11 @@ That’s it. All your forks will be synced automatically.
 3. Uses `gh repo sync` to sync each fork with its upstream
 4. Performs all operations **on GitHub**, not locally
 
----
 
-## Customization Ideas
-
-Possible enhancements you can add:
-
-* Dry-run mode
-* Skip forks with conflicts
-* Sync a specific branch
-* Parallel execution
-* GitHub Action automation
-* GitHub Enterprise support
 
 ---
 
 ## License
 
 MIT License.
-Use it, modify it, break it, fix it.
 
----
-
-Happy syncing 🚀

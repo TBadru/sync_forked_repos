@@ -1,27 +1,24 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+set -eu
 
 echo "Fetching all forked repositories..."
 
-mapfile -t FORKS < <(
-  gh repo list --limit 1000 --json nameWithOwner,isFork \
-  | jq -r '.[] | select(.isFork == true) | .nameWithOwner'
-)
+FORKS=$(gh repo list --limit 1000 --json nameWithOwner,isFork \
+  | jq -r '.[] | select(.isFork == true) | .nameWithOwner')
 
-if [[ ${#FORKS[@]} -eq 0 ]]; then
+if [ -z "$FORKS" ]; then
   echo "No forks found."
   exit 0
 fi
 
-for FORK in "${FORKS[@]}"; do
+echo "$FORKS" | while IFS= read -r FORK; do
   echo "----------------------------------------"
   echo "Syncing fork: $FORK"
 
   # Server-side sync (default branch only)
-  gh repo sync "$FORK" --force || {
+  if ! gh repo sync "$FORK" --force; then
     echo "⚠️  Failed to sync $FORK"
-    continue
-  }
+  fi
 done
 
 echo "----------------------------------------"
